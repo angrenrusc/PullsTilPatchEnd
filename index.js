@@ -58,16 +58,6 @@ async function getSheetData_charas() {
     const response = await fetch(url2);
     const text = await response.text();
 
-   // const base64String = "LypPX28qLwpnb29nbGUudmlzdWFsaXphdGlvbi5RdWVyeS5zZXRSZXNwb25zZSh7InZlcnNpb24iOiIwLjYiLCJyZXFJZCI6IjAiLCJzdGF0dXMiOiJvayIsInNpZyI6IjIyMzM0OTI2OSIsInRhYmxlIjp7ImNvbHMiOlt7ImlkIjoiQSIsImxhYmVsIjoiIiwidHlwZSI6ImRhdGUiLCJwYXR0ZXJuIjoiZGQubW0ueXl5eSJ9LHsiaWQiOiJCIiwibGFiZWwiOiIiLCJ0eXBlIjoic3RyaW5nIn0seyJpZCI6IkMiLCJsYWJlbCI6IiIsInR5cGUiOiJzdHJpbmcifV0sInJvd3MiOlt7ImMiOlt7InYiOiJEYXRlKDIwMjYsMTAsMTMpIiwiZiI6IjEzLjExLjIwMjYifSx7InYiOiJMaWx5IC8gU2lncmlrYSAvIFFpdXl1YW4ifSx7InYiOiJGaXJzdCBoYWxmIGVuZCJ9XX0seyJjIjpbeyJ2IjoiRGF0ZSgyMDI2LDExLDIpIiwiZiI6IjAyLjEyLjIwMjYifSx7InYiOiJZYW5neWFuZyBYTCAvIFN1aXN1aSAvIEhpeXVraSJ9LHsidiI6IlNlY29uZCBoYWxmIGVuZCJ9XX0seyJjIjpbeyJ2IjoiRGF0ZSgyMDI2LDEwLDIpIiwiZiI6IjAyLjExLjIwMjYifSx7InYiOiJUb2RheSJ9LHsidiI6bnVsbH1dfV0sInBhcnNlZE51bUhlYWRlcnMiOjB9fSk7";
-
- const binaryString = atob(base64String);
- const bytes = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-       bytes[i] = binaryString.charCodeAt(i);
-    }
-  
-    text = new TextDecoder().decode(bytes);
-
     jsonString = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
     data = JSON.parse(jsonString);
     
@@ -101,16 +91,6 @@ async function getSheetData() {
   try {
     const response = await fetch(url);
     const text = await response.text();
-
-   // const base64String = "LypPX28qLwpnb29nbGUudmlzdWFsaXphdGlvbi5RdWVyeS5zZXRSZXNwb25zZSh7InZlcnNpb24iOiIwLjYiLCJyZXFJZCI6IjAiLCJzdGF0dXMiOiJvayIsInNpZyI6IjEwNTE2OTk4MTEiLCJ0YWJsZSI6eyJjb2xzIjpbeyJpZCI6IkEiLCJsYWJlbCI6IiIsInR5cGUiOiJzdHJpbmcifSx7ImlkIjoiQiIsImxhYmVsIjoiIiwidHlwZSI6Im51bWJlciIsInBhdHRlcm4iOiJHZW5lcmFsIn0seyJpZCI6IkMiLCJsYWJlbCI6IiIsInR5cGUiOiJkYXRlIiwicGF0dGVybiI6ImRkLm1tLnl5eXkifV0sInJvd3MiOlt7ImMiOlt7InYiOiJFeHBsb3JhdGlvbiJ9LHsidiI6MTIwLjAsImYiOiIxMjAifSx7InYiOiJEYXRlKDIwMjYsMTAsMTApIiwiZiI6IjEwLjExLjIwMjYifV19LHsiYyI6W3sidiI6IkV2ZW50IDEifSx7InYiOjMwMC4wLCJmIjoiMzAwIn0seyJ2IjoiRGF0ZSgyMDI2LDEwLDEwKSIsImYiOiIxMC4xMS4yMDI2In1dfSx7ImMiOlt7InYiOiJFdmVudCAyIn0seyJ2Ijo1MC4wLCJmIjoiNTAifSx7InYiOiJEYXRlKDIwMjYsMTAsMTMpIiwiZiI6IjEzLjExLjIwMjYifV19LHsiYyI6W3sidiI6IlRvQSAxIn0seyJ2IjoyMDAuMCwiZiI6IjIwMCJ9LHsidiI6IkRhdGUoMjAyNiwxMCwyMykiLCJmIjoiMjMuMTEuMjAyNiJ9XX0seyJjIjpbeyJ2IjoiV2hpd2EifSx7InYiOjEwMC4wLCJmIjoiMTAwIn0seyJ2IjoiRGF0ZSgyMDI2LDExLDEpIiwiZiI6IjAxLjEyLjIwMjYifV19XSwicGFyc2VkTnVtSGVhZGVycyI6MH19KTs=";
-
- const binaryString = atob(base64String);
- const bytes = new Uint8Array(binaryString.length);
-  for (let i = 0; i < binaryString.length; i++) {
-    bytes[i] = binaryString.charCodeAt(i);
-  }
-  
-    text = new TextDecoder().decode(bytes);
 
     const jsonString = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
     const data = JSON.parse(jsonString);
