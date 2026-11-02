@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pull Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
+<body onload="getSheetData_charas()">
+<div class="flex-container" div style="max-width:80%;max-height:80%;display:flex;flex-direction:column;gap:20px;">
+<div class="flex-container" div style="display:flex;flex-direction:row;gap:20px;">
+    <div class="container" div style="float:left;">
+        <h3>Pulls</h3>
+        <p>Amount of gold tides you have
+            <input class="input" onchange="calculateThing()" type="number" id="tides" min="0" value="0">
+        </p>
+        <p>Amount of asterites you have
+            <input class="input" onchange="calculateThing()" type="number" id="asterites" min="0" value="0">
+        </p>
+	<p>Target banner
+		<select name="targetchar" id="targetchar" onchange="calculateThing()">
+			<option value="99">Select target</option>
+			<option value="0" id="banner0">First half</option>
+			<option value="1" id="banner1">Second half</option>
+		</select>
+        </p>
+    </div>
+    <div class="container" div style="float:right;">
+        <h3>Data</h3>
+	<p id="today-date"></p>
+	<p id="first-date"></p>
+	<p id="second-date"></p>
+    </div>
+</div>
+<div class="container">
+<h3>Events and Endgame</h3>
+<p> Select the events that you want to be counted. </p>
+<p> If your banner is in the first half only first half events will be displayed. </p>
+<p id="events-list">Available events </p>
+</div>
+<div class="container">
+<h3>Results</h3>
+<p id="dailies-asterites"></p>
+<p id="weeklies-asterites"></p>
+<p id="events-pulls"></p>
+<p id="total-asterites"></p>
+<p id="total-pulls"></p>
+<p> Dailies and weeklies are calculated with the assumption that you didn't claim currently available ones. </p>
+</div>
+</div>
+    <script src="index.js"></script>
+</body>
+</html> 
