@@ -26,16 +26,16 @@ input[type=number] {
     <div class="container" div style="float:left;">
         <h3>Pulls</h3>
         <p>Amount of gold tides you have
-            <input class="input" onchange="calculateThing()" type="number" id="tides" min="0" value="0">
+            <input class="input" onchange="calculateCurrent()" type="number" id="tides" min="0" value="0">
         </p>
         <p>Amount of asterites you have
-            <input class="input" onchange="calculateThing()" type="number" id="asterites" min="0" value="0">
+            <input class="input" onchange="calculateCurrent()" type="number" id="asterites" min="0" value="0">
         </p>
 	<p>Target banner
-		<select name="targetchar" id="targetchar" onchange="calculateThing()">
+		<select name="targetchar" id="targetchar" onchange="calculateDailies()">
 			<option value="99">Select target</option>
-			<option value="0" id="banner0">First half</option>
-			<option value="1" id="banner1">Second half</option>
+			<option value="0" id="banner0"></option>
+			<option value="1" id="banner1"></option>
 		</select>
         </p>
     </div>
@@ -54,11 +54,14 @@ input[type=number] {
 </div>
 <div class="container">
 <h3>Results</h3>
+<h4 id="total-pulls"></h4>
+<h4 id="total-asterites"></h4>
+<p></p>
+<p>Notes: </p>
+<p id="current-asterites"></p>
 <p id="dailies-asterites"></p>
 <p id="weeklies-asterites"></p>
 <p id="events-pulls"></p>
-<p id="total-asterites"></p>
-<p id="total-pulls"></p>
 <p> Dailies and weeklies are calculated with the assumption that you didn't claim currently available ones. </p>
 </div>
 </div>
