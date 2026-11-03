@@ -106,7 +106,9 @@ async function getSheetData() {
     cleanDataEvents = rows.map(row => {
       return row.c.map(cell => cell ? cell.v : null);
     });
-  return 0;
+    displayEventData();
+    calculateEvents();
+    return 0;
   } catch (error) {
     console.error('Error fetching sheet data:', error);
   }
@@ -139,8 +141,7 @@ function calculateDailies() {
 
   if (previous_target == 99)
      getSheetData();
-
-  if ( (target == 0 || target == 1) 
+  else if ( (target == 0 || target == 1) 
      && (target != previous_target) ) {
      displayEventData();
      calculateEvents();
