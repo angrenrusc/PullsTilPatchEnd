@@ -5,12 +5,14 @@ const url2 = `https://docs.google.com/spreadsheets/d/1BqUn76g0e0AN6wTngUB6ASjh6j
 let today;
 let firsthalf;
 let secondhalf; 
-let target;
-let weeklies_asterites;
-let dailies_asterites;
-let total_events;
-let tides;
-let asterites;
+let target = 99;
+let weeklies_asterites = 0;
+let dailies_asterites = 0;
+let total_events = 0;
+let tides = 0;
+let asterites = 0;
+let previous_target = 99;
+let cleanDataEvents;
 
 function convertDate(date) {
    dateStr = date.slice(5, date.length-1);
@@ -87,6 +89,10 @@ async function getSheetData_charas() {
   }
 }
 
+function displayEventData() {
+    document.getElementById("events-list").innerHTML = generateTable(cleanDataEvents);
+}
+
 async function getSheetData() {
   try {
     const response = await fetch(url);
@@ -97,33 +103,27 @@ async function getSheetData() {
     
     const rows = data.table.rows;
     
-    const cleanData = rows.map(row => {
+    cleanDataEvents = rows.map(row => {
       return row.c.map(cell => cell ? cell.v : null);
     });
-
-    console.log(cleanData); 
-    document.getElementById("events-list").innerHTML = generateTable(cleanData);
-    return cleanData;
+  return 0;
   } catch (error) {
     console.error('Error fetching sheet data:', error);
   }
 }
 
-
-function calculateThing() {
+function calculateCurrent() {
   tides_s = document.getElementById("tides").value;
   tides = parseInt(tides_s, 10);
 
   asterites_s = document.getElementById("asterites").value;
-
   asterites = parseInt(asterites_s, 10);
+  calculateTotal();
+}
 
-  total_pulls = (tides + asterites / 160).toFixed(2);
+function calculateDailies() {
 
-  document.getElementById(
-    "total-pulls"
-  ).innerHTML = `Total pulls available: ${total_pulls}`;
-
+  previous_target = target;
   target = document.getElementById("targetchar").value;
 
   let number_of_days = 0;
@@ -137,8 +137,14 @@ function calculateThing() {
   dailies_asterites = 60 * number_of_days;
   weeklies_asterites = Math.ceil(number_of_days / 7) * 160;
 
-  if (target == 0 || target == 1)
+  if (previous_target == 99)
      getSheetData();
+
+  if ( (target == 0 || target == 1) 
+     && (target != previous_target) ) {
+     displayEventData();
+     calculateEvents();
+  }
 
   document.getElementById(
     "dailies-asterites"
@@ -147,8 +153,6 @@ function calculateThing() {
     "weeklies-asterites"
   ).innerHTML = `Weeklies asterites: ${weeklies_asterites}`;
 
-  if (target == 0 || target == 1)
-     calculateEvents();
   calculateTotal();
 }
 
@@ -177,12 +181,14 @@ function calculateEvents() {
 
 function calculateTotal() {
    total = weeklies_asterites + dailies_asterites + total_events + asterites + (tides * 160);
-   console.log(total);
    total_pulls = (total / 160).toFixed(2);
     document.getElementById(
+    "current-asterites"
+   ).innerHTML = `Currently available asterites: ${asterites + (tides * 160)}`;
+    document.getElementById(
     "total-asterites"
-   ).innerHTML = `Total asterites available: ${total}`;
+   ).innerHTML = `Total asterites til end of patch: ${total}`;
    document.getElementById(
     "total-pulls"
-   ).innerHTML = `Total pulls available: ${total_pulls}`;
+   ).innerHTML = `Total pulls til end of patch: ${total_pulls}`;
 }
