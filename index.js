@@ -80,7 +80,7 @@ async function getSheetData_charas() {
 
     options = { month: 'long', day: 'numeric' };
 
-    document.getElementById("today-date").innerHTML = `Current Date: ${today.toLocaleDateString('en-GB', options)}`;
+    document.getElementById("today-date").innerHTML = `Current date: ${today.toLocaleDateString('en-GB', options)}`;
     document.getElementById("first-date").innerHTML = `First half end: ${firsthalf.toLocaleDateString('en-GB', options)}`;
     document.getElementById("second-date").innerHTML = `Second half end: ${secondhalf.toLocaleDateString('en-GB', options)}`;
     return cleanData;
@@ -185,11 +185,11 @@ function calculateTotal() {
    total_pulls = (total / 160).toFixed(2);
     document.getElementById(
     "current-asterites"
-   ).innerHTML = `Currently available asterites: ${asterites + (tides * 160)}`;
+   ).innerHTML = `Currently available asterites (inc tides): ${asterites + (tides * 160)}`;
     document.getElementById(
     "total-asterites"
-   ).innerHTML = `Total asterites til end of patch: ${total}`;
+   ).innerHTML = `Total asterites til the end of the banner: ${total}`;
    document.getElementById(
     "total-pulls"
-   ).innerHTML = `Total pulls til end of patch: ${total_pulls}`;
+   ).innerHTML = `Total pulls til the end of the banner: ${total_pulls}`;
 }
