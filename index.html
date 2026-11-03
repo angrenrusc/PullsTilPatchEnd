@@ -22,14 +22,14 @@ input[type=number] {
 </style>
 <body onload="getSheetData_charas()">
 <div class="flex-container" div style="max-width:80%;max-height:80%;display:flex;flex-direction:column;gap:20px;">
-<div class="flex-container" div style="display:flex;flex-direction:row;gap:20px;">
-    <div class="container" div style="float:left;">
+<div class="flex-container" div style="display:flex;flex-direction:row;gap:20px;width:100%">
+    <div class="container" div style="float:left;width:65%">
         <h3>Pulls</h3>
         <p>Amount of gold tides you have
-            <input class="input" onchange="calculateCurrent()" type="number" id="tides" min="0" value="0">
+            <input class="input-field" onchange="calculateCurrent()" type="number" id="tides" min="0" value="0">
         </p>
         <p>Amount of asterites you have
-            <input class="input" onchange="calculateCurrent()" type="number" id="asterites" min="0" value="0">
+            <input class="input-field" onchange="calculateCurrent()" type="number" id="asterites" min="0" value="0">
         </p>
 	<p>Target banner
 		<select name="targetchar" id="targetchar" onchange="calculateDailies()">
@@ -39,7 +39,7 @@ input[type=number] {
 		</select>
         </p>
     </div>
-    <div class="container" div style="float:right;">
+    <div class="container" div style="float:right;width:35%">
         <h3>Data</h3>
 	<p id="today-date"></p>
 	<p id="first-date"></p>
